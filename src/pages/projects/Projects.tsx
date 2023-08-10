@@ -1,4 +1,12 @@
-const Project = () => {
+import projectImg from "../../assets/images/project.png";
+import port1Img from "../../assets/images/port1.jpg";
+import port2Img from "../../assets/images/port2.jpg";
+import port3Img from "../../assets/images/port3.jpg";
+import port4Img from "../../assets/images/port4.jpg";
+import port5Img from "../../assets/images/port5.jpg";
+import port6Img from "../../assets/images/port6.jpg";
+
+const Projects = () => {
   document.title = "Projects";
   return (
     <>
@@ -19,7 +27,7 @@ const Project = () => {
             <img
               className="object-cover object-center rounded"
               alt="hero"
-              src="assets/images/project.png"
+              src={projectImg}
             />
           </div>
         </div>
@@ -43,7 +51,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port1.jpg"
+                  src={port1Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -64,7 +72,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port2.jpg"
+                  src={port2Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -85,7 +93,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port3.jpg"
+                  src={port3Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -106,7 +114,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port4.jpg"
+                  src={port4Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -127,7 +135,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port5.jpg"
+                  src={port5Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -148,7 +156,7 @@ const Project = () => {
                 <img
                   alt="gallery"
                   className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="assets/images/port6.jpg"
+                  src={port6Img}
                 />
                 <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
                   <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
@@ -171,4 +179,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Projects;

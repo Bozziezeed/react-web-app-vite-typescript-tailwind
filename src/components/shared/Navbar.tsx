@@ -354,7 +354,7 @@ export const Navbar = () => {
           {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
           <NavLink
             to="/"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            className=" text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
           </NavLink>
@@ -403,4 +403,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-

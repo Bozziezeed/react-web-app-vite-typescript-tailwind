@@ -4,7 +4,7 @@ import { Home } from "./pages/home/Home";
 import ErrorPage from "./pages/error/ErrorPage";
 import About from "./pages/about/About";
 import Teams from "./pages/teams/Teams";
-import Project from "./pages/project/Project";
+import Projects from "./pages/projects/Projects";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppRoute = (JSXtag: any) => (
@@ -29,9 +29,9 @@ const router = createBrowserRouter([
     element: AppRoute(Teams),
   },
   {
-    path: "/project",
+    path: "/projects",
 
-    element: AppRoute(Project),
+    element: AppRoute(Projects),
   },
 ]);
 const RoutesSwitch = () => {

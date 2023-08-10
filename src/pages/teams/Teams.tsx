@@ -1,3 +1,5 @@
+import ourteamImg from "../../assets/images/ourteam.png";
+
 const Team = () => {
   document.title = "Teams";
   return (
@@ -19,7 +21,7 @@ const Team = () => {
             <img
               className="object-cover object-center rounded"
               alt="hero"
-              src="assets/images/ourteam.png"
+              src={ourteamImg}
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+import nuxtImg from "../../assets/images/nuxt.png";
 const About = () => {
   document.title = "About";
   return (
@@ -19,7 +20,7 @@ const About = () => {
             <img
               className="object-cover object-center rounded"
               alt="hero"
-              src="assets/images/nuxt.png"
+              src={nuxtImg}
             />
           </div>
         </div>
