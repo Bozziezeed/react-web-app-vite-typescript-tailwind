@@ -1,8 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useOutsideClick from "./useOutsideClick";
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(ref, () => {
+    setIsActive(false);
+  });
 
   return (
     <nav className="bg-gray-800 fixed w-full z-20">
@@ -15,12 +23,15 @@ export const Navbar = () => {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
             >
               <span className="sr-only">Open main menu</span>
 
               {/* Menu open: "hidden", Menu closed: "block" */}
               <svg
-                className="hidden h-6 w-6"
+                className={`${isOpen ? "hidden" : "block"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -37,7 +48,7 @@ export const Navbar = () => {
 
               {/* Menu open: "block", Menu closed: "hidden" */}
               <svg
-                className="hidden h-6 w-6"
+                className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -102,7 +113,7 @@ export const Navbar = () => {
                   Projects
                 </NavLink>
 
-                <div className="relative">
+                <div className="relative" ref={ref}>
                   {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
                   <button
                     type="button"
@@ -373,58 +384,81 @@ export const Navbar = () => {
       </div>
 
       {/* เมนูโหมด Mobile */}
-
-      <div className="sm:hidden hidden" id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-          <NavLink
-            to="/"
-            className=" text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/about"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/teams"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Teams
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Projects
-          </NavLink>
-          <button
-            type="button"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 inline-flex rounded-md text-sm font-medium"
-            aria-expanded="false"
-          >
-            <span>More</span>
-
-            <svg
-              className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      {
+        <div
+          className={`${isOpen ? "sm:hidden block" : "sm:hidden hidden"}`}
+          id="mobile-menu"
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+            <NavLink
+              to="/"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium custom-link"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 15l7-7 7 7"
-              />
-            </svg>
-          </button>
+              Home
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium custom-link"
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/teams"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium custom-link"
+            >
+              Teams
+            </NavLink>
+            <NavLink
+              to="/projects"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium custom-link"
+            >
+              Projects
+            </NavLink>
+            <button
+              type="button"
+              className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 inline-flex rounded-md text-sm font-medium"
+              aria-expanded="false"
+              onClick={() => {
+                setIsActive(!isActive);
+              }}
+            >
+              <span>More</span>
+
+              {isActive ? (
+                <svg
+                  className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 15l7-7 7 7"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
-      </div>
+      }
     </nav>
   );
 };
