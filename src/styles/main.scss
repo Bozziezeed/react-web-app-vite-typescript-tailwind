@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this CSS to change the background color when the link is active */
+.custom-link {
+    transition: background-color 0.1s;
+}
+
+.custom-link.active {
+    @apply bg-green-500;
+    /* Change this to the desired green color */
+}

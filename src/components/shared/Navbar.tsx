@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <nav className="bg-gray-800 fixed w-full z-20">
       <div className="container mx-auto px-2 sm:px-6 lg:px-8">
@@ -76,25 +79,25 @@ export const Navbar = () => {
               <div className="flex space-x-4">
                 <NavLink
                   to="/"
-                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium custom-link "
                 >
                   Home
                 </NavLink>
                 <NavLink
                   to="/about"
-                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium custom-link"
                 >
                   About
                 </NavLink>
                 <NavLink
                   to="/teams"
-                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium custom-link"
                 >
                   Teams
                 </NavLink>
                 <NavLink
                   to="/projects"
-                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium custom-link"
                 >
                   Projects
                 </NavLink>
@@ -105,23 +108,41 @@ export const Navbar = () => {
                     type="button"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 inline-flex rounded-md text-sm font-medium"
                     aria-expanded="false"
+                    onClick={() => setIsActive(!isActive)}
                   >
                     <span>More</span>
 
-                    <svg
-                      className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 15l7-7 7 7"
-                      />
-                    </svg>
+                    {isActive ? (
+                      <svg
+                        className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 15l7-7 7 7"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    )}
                   </button>
 
                   {/*
@@ -134,7 +155,11 @@ export const Navbar = () => {
                       To: "opacity-0 translate-y-1"
                 */}
 
-                  <div className="hidden absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
+                  <div
+                    className={`${
+                      isActive ? "block" : "hidden"
+                    } absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0`}
+                  >
                     <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                         <a
