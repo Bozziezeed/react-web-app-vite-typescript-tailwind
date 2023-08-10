@@ -1,6 +1,7 @@
 import introImg from "../../assets/images/home_intro.png";
 
 export const Home = () => {
+  document.title = "Home";
   return (
     <>
       <section className="text-gray-600 mb-6">
